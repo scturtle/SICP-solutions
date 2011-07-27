@@ -1,0 +1,5 @@
+(define (make-center-percent c p)
+  (make-interval (- c (* c p)) (+ c (* c p))))
+(define (percent i)
+  (let ((c (/ (+ (lower-bound i) (upper-bound i)) 2)))
+    (/ (- (upper-bound i) c) c)))

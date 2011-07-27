@@ -1,0 +1,26 @@
+(use-modules (ice-9 debug))
+
+(load "fastprim.scm")
+
+(define (test-carmichael? n)
+  (define (iter n a)
+    (if (= a 0)
+      #t
+      (if (= (expmod a n n) a)
+	(iter n (- a 1))
+	#f)))
+  (trace iter)
+  (iter n (- n 1)))
+
+(display (test-carmichael? 561))
+(newline)
+(display (test-carmichael? 1105))
+(newline)
+(display (test-carmichael? 1729))
+(newline)
+(display (test-carmichael? 2465))
+(newline)
+(display (test-carmichael? 2821))
+(newline)
+(display (test-carmichael? 6601))
+(newline)
