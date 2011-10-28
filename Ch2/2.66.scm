@@ -1,0 +1,8 @@
+(define (lookup given-key tree)
+  (if (not (list? tree))
+    '()
+    (if (= given-key (key (entry tree)))
+      (entry tree)
+      (if (< given-key (key (entry tree)))
+	(lookup given-key (left-branch tree))
+	(lookup given-key (right-branch tree))))))
